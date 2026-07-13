@@ -1,6 +1,6 @@
 # Engineering Report: Gourmet Product Explorer Architecture & Design
 
-**Author**: Senior Staff Software Engineer  
+**Author**: Ali khamis 
 **Date**: July 13, 2026  
 **Project**: Product Explorer (Vanilla Search, Filter & Sort)  
 **Repository**: [https://github.com/Ali-Khamis45/MeanStackDay2Task](https://github.com/Ali-Khamis45/MeanStackDay2Task)
