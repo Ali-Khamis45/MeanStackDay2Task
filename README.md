@@ -24,8 +24,7 @@ Each category accurately maps and returns products belonging to that category on
     ![Pasta Category](assets/screenshots/pasta_category_1783937786092.png)
 *   **Beef**: Beef/Steak recipes only
     ![Beef Category](assets/screenshots/beef_category_1783937797608.png)
-*   **Dough**: Bakery/Croissant recipes only
-    ![Dough Category](assets/screenshots/dough_category_1783937805999.png)
+
 
 ### 3. Category Override Correction (Self-Correcting Data)
 Angel Chicken Pasta is returned from the API under the `salad` query. Our keyword sifter overrides it and correctly places it under **Pasta**:
