@@ -31,9 +31,6 @@ Each category accurately maps and returns products belonging to that category on
 Angel Chicken Pasta is returned from the API under the `salad` query. Our keyword sifter overrides it and correctly places it under **Pasta**:
 ![Angel Chicken Pasta Correction](assets/screenshots/pasta_category_fix_1783938371089.png)
 
-### 4. Placeholder Image Interception
-Unappealing publisher placeholders (like the green Epicurious logo) are intercepted and replaced with high-quality category food photography:
-![Croissant French Toast Card](assets/screenshots/croissant_french_toast_1783938126391.png)
 
 ### 5. Price & Query Filters in Action
 *   **Price Filtered at $55**:
