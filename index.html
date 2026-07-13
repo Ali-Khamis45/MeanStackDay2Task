@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Product Explorer - Browse, search, filter, and sort a delicious range of gourmet pizza recipes with live sorting, advanced price filtering, and real-time statistics.">
+  <title>Product Explorer | Gourmet Pizza Search & Filter</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" id="brand-logo">
+        <span>Product Explorer</span>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#" class="nav-link active" data-category="all" id="nav-item-all">Home</a>
+        <a href="#" class="nav-link" data-category="Pizza" id="nav-item-pizza">Pizza</a>
+        <a href="#" class="nav-link" data-category="Salad" id="nav-item-salad">Salad</a>
+        <a href="#" class="nav-link" data-category="Pasta" id="nav-item-pasta">Pasta</a>
+        <a href="#" class="nav-link" data-category="Dough" id="nav-item-dough">Dough</a>
+        <a href="#" class="nav-link" data-category="Beef" id="nav-item-beef">Beef</a>
+      </nav>
+
+      <!-- Right Header Actions (Mobile toggle & Stats shortcut) -->
+      <div class="header-actions">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="hero-badge">Artisanal & Fresh</span>
+      <h1>Gourmet Culinary Collection</h1>
+      <p>Discover hand-crafted recipes, dynamic filters, and culinary inspiration compiled from the best chefs globally.</p>
+    </div>
+  </section>
+
+  <!-- Main Grid Layout -->
+  <main class="main-layout container">
+    
+    <!-- Sidebar Control Panel -->
+    <aside class="sidebar-filters" id="sidebar-filters">
+      <div class="sidebar-header">
+        <h2>Filters & Sorting</h2>
+        <button class="btn-clear-all" id="btn-clear-filters-side" title="Reset all parameters">Clear All</button>
+      </div>
+
+      <div class="filter-group">
+        <label for="search-input" class="filter-label">Live Search</label>
+        <div class="search-wrapper">
+          <input type="text" id="search-input" placeholder="Search by name or category..." autocomplete="off">
+          <button class="search-clear-btn" id="btn-clear-search" aria-label="Clear Search" type="button">
+            &times;
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Categories</span>
+        <div class="category-list" id="category-sidebar-list">
+          <button class="category-btn active" data-category="all" id="side-cat-all">All Recipes</button>
+          <button class="category-btn" data-category="Pizza" id="side-cat-pizza">Pizza</button>
+          <button class="category-btn" data-category="Salad" id="side-cat-salad">Salad</button>
+          <button class="category-btn" data-category="Pasta" id="side-cat-pasta">Pasta</button>
+          <button class="category-btn" data-category="Dough" id="side-cat-dough">Dough</button>
+          <button class="category-btn" data-category="Beef" id="side-cat-beef">Beef</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="slider-header">
+          <label for="price-slider" class="filter-label">Max Price</label>
+          <span class="slider-value" id="price-slider-value">$150</span>
+        </div>
+        <input type="range" id="price-slider" min="10" max="150" value="150" step="5" class="slider-input">
+        <div class="slider-ticks">
+          <span>$10</span>
+          <span>$80</span>
+          <span>$150</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label for="sort-select" class="filter-label">Sort Products By</label>
+        <div class="select-wrapper">
+          <select id="sort-select" class="sort-select">
+            <option value="name-asc">Name: A to Z</option>
+            <option value="name-desc">Name: Z to A</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Advanced Aggregations Panel -->
+      <div class="insights-panel">
+        <h3>Live Inventory Insights</h3>
+        <div class="insight-row">
+          <span>Visible Count:</span>
+          <strong id="stat-visible-count">0</strong>
+        </div>
+        <div class="insight-row">
+          <span>Average Price:</span>
+          <strong id="stat-average-price">$0.00</strong>
+        </div>
+        <div class="insight-row">
+          <span>All Under Budget:</span>
+          <span class="badge" id="stat-budget-check">No</span>
+        </div>
+        <div class="insight-row">
+          <span>Premium Selection:</span>
+          <span class="badge" id="stat-premium-check">No</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <section class="products-section">
+      <!-- Active Chips & Counter -->
+      <div class="results-header">
+        <div class="results-meta">
+          <span class="results-count" id="results-count-text">Found 0 items</span>
+        </div>
+        <div class="active-chips" id="active-chips-container">
+          <!-- Active filter chips will render here -->
+        </div>
+      </div>
+
+      <!-- Loading State (Skeleton Grid) -->
+      <div class="loading-grid" id="loading-grid">
+        <!-- Skeleton cards will be loaded via script -->
+      </div>
+
+      <!-- Empty State (No matches found) -->
+      <div class="empty-state hidden" id="empty-state">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </div>
+        <h3>No Recipes Match Your Filters</h3>
+        <p>Try adjusting your keywords, category settings, or extending your budget slider.</p>
+        <button class="btn btn-primary" id="btn-reset-empty">Reset Filters</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid">
+        <!-- Cards render dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Product Explorer</h3>
+        <p>Connecting food lovers with recipes, tools, and premium features since 2026.</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Product Explorer. Built for advanced JavaScript rendering demonstration.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Core JavaScript Files -->
+  <script src="js/api.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
