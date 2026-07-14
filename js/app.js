@@ -79,19 +79,14 @@ function saveStateToStorage() {
  * Loads last selected criteria from browser local storage on initialization
  */
 function loadStateFromStorage() {
+  // Always start fresh so stale filters never hide products on load
   try {
-    const savedFilters = localStorage.getItem(STORAGE_KEYS.FILTERS);
-    const savedSort = localStorage.getItem(STORAGE_KEYS.SORT);
-
-    if (savedFilters) {
-      state.filters = JSON.parse(savedFilters);
-    }
-    if (savedSort) {
-      state.sortBy = savedSort;
-    }
+    localStorage.removeItem(STORAGE_KEYS.FILTERS);
+    localStorage.removeItem(STORAGE_KEYS.SORT);
   } catch (e) {
-    console.error('Could not load state from localStorage:', e);
+    // ignore
   }
+  // State stays at its defaults (all products visible)
 }
 
 /**
